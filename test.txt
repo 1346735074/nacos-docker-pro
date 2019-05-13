@@ -1,0 +1,32 @@
+git clone https://github.com/1346735074/nacos-docker-pro.git /home/nacos-docker-pro
+
+
+docker pull nacos/nacos-server:latest
+
+
+
+cd nacos-docker-pro/nacos-docker-uat/example/
+docker-compose -f cluster-ip1.yaml up
+docker-compose -f cluster-ip2.yaml up
+docker-compose -f cluster-ip3.yaml up
+
+
+
+# 查看日志
+cd /home/nacos-docker-pro/nacos-docker-uat/example/cluster-logs/nacos1
+tail -f naming-raft.log
+tail -f config-server.log
+tail -f nacos.log
+
+cd /home/nacos-docker-pro/nacos-docker-uat/example/cluster-logs/nacos2
+tail -f naming-raft.log
+
+cd /home/nacos-docker-pro/nacos-docker-uat/example/cluster-logs/nacos3
+tail -f naming-raft.log
+
+
+发布配置
+curl -X POST "http://127.0.0.1:8848/nacos/v1/cs/configs?dataId=nacos.cfg.dataId&group=test&content=helloWorld"
+
+获取配置
+curl -X GET "http://127.0.0.1:8848/nacos/v1/cs/configs?dataId=nacos.cfg.dataId&group=test"

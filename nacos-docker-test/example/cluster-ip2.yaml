@@ -1,0 +1,14 @@
+version: "2"
+services:
+  nacos2:
+    image: nacos/nacos-server:latest
+    container_name: nacos2
+    volumes:
+      - ./cluster-logs/nacos2:/home/nacos/logs
+      - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+      - ./init.d/node2/application.properties:/home/nacos/conf/application.properties
+    ports:
+      - "8848:8848"
+    env_file:
+      - ../env/nacos-ip.env
+    restart: always
