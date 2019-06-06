@@ -29,11 +29,13 @@ spec:
         - name: PROVISIONER_NAME
           value: fuseim.pri/ifs
         - name: NFS_SERVER
-          value: 10.1.1.99
+          # 更改为个人nfs地址
+          value: 172.16.4.176
         - name: NFS_PATH
           value: /data/nfs-share
       volumes:
       - name: nfs-client-root
         nfs:
-          server: 10.1.1.99
+          # 更改为个人nfs地址
+          server: 172.16.4.176
           path: /data/nfs-share

@@ -23,13 +23,13 @@ metadata:
   name: nacos-cm
   namespace: nacos
 data:
-  mysql.master.service.host: "10.1.1.97"
+  mysql.master.service.host: "10.1.1.65"
   mysql.master.db.name: "nacos_devtest"
-  mysql.master.port: "5511"
-  mysql.slave.service.host: "10.1.1.97"
-  mysql.slave.port: "5511"
-  mysql.master.user: "root"
-  mysql.master.password: "Rtqw123OpnmER"
+  mysql.master.port: "3306"
+  mysql.slave.service.host: "10.1.1.65"
+  mysql.slave.port: "3306"
+  mysql.master.user: "xxx"
+  mysql.master.password: "xxxx"
 ---
 apiVersion: apps/v1
 kind: StatefulSet
