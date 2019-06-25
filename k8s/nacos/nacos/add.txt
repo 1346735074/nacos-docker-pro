@@ -1,0 +1,20 @@
+              {
+                "name": "custom-volume",
+                "mountPath": "/home/nacos/init.d/custom.properties",
+                "subPath": "custom.properties"
+              }
+        "volumes": [
+          {
+            "name": "custom-volume",
+            "configMap": {
+              "name": "nacos-config",
+              "items": [
+                {
+                  "key": "custom.properties",
+                  "path": "custom.properties"
+                }
+              ],
+              "defaultMode": 420
+            }
+          }
+        ],
