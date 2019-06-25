@@ -67,7 +67,7 @@ spec:
       containers:
         - name: nacos
           imagePullPolicy: Always
-          image: nacos/nacos-server:latest
+          image: nacos/nacos-server:1.0.1
           resources:
             requests:
               memory: "2Gi"
@@ -143,6 +143,18 @@ spec:
               mountPath: /home/nacos/data
             - name: logdir
               mountPath: /home/nacos/logs
+              # 挂载custom.properties文件
+            - name: custom-volume
+              mountPath: /home/nacos/init.d/custom.properties
+              subPath: custom.properties
+      # 挂载custom.properties文件
+      volumes:
+        - name: custom-volume
+          configMap:
+            name: nacos-config
+            items:
+              - key: custom.properties
+                path: custom.properties
   volumeClaimTemplates:
     - metadata:
         name: plugindir
