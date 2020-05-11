@@ -1,12 +1,11 @@
 version: "2"
 services:
   nacos1:
-    image: nacos/nacos-server:latest
+    image: nacos/nacos-server:1.2.1
     container_name: nacos1
     volumes:
-      - ./cluster-logs/nacos1:/home/nacos/logs
+      - /data/nacos/cluster-logs/nacos1:/home/nacos/logs
       - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
-      - ./init.d/node1/application.properties:/home/nacos/conf/application.properties
     ports:
       - "8848:8848"
       - "9555:9555"
