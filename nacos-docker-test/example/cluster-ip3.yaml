@@ -6,6 +6,7 @@ services:
     volumes:
       - /data/nacos/cluster-logs/nacos1:/home/nacos/logs
       - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
+      - ./init.d/node3/application.properties:/home/nacos/conf/application.properties
     ports:
       - "8848:8848"
     env_file:
